@@ -1,4 +1,4 @@
-package java.start.today;
+package com.start.today;
 
 public class ValidAnagram {
     public static void main(String[] args) {
