@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class SteramApiQuestions {
     public static void main(String[] args) {
+
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee("John Doe", 50000.0, 30, "IT", "Software Engineer", "123 Main St"));
         employees.add(new Employee("Jane Smith", 60000.0, 28, "Finance", "Accountant", "456 Elm St"));
