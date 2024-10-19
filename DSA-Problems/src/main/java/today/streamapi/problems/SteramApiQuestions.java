@@ -30,8 +30,8 @@ public class SteramApiQuestions {
         //Group The employees By Department Names
 //        Map<String, List<Employee>> deptMap = employees.stream().collect(Collectors.groupingBy(emp -> emp.getDepartment()));
         Map<String, List<Employee>> deptMap = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)); // or we can replace the lambda expn by method reference
-        for (Map.Entry<String ,List<Employee>> entry : deptMap.entrySet()){
-            for(Employee emp: entry.getValue()){
+        for (Map.Entry<String, List<Employee>> entry : deptMap.entrySet()) {
+            for (Employee emp : entry.getValue()) {
                 System.out.println(emp.getDepartment());
             }
         }
@@ -41,11 +41,11 @@ public class SteramApiQuestions {
         System.out.println("Max age is :  " + maxAge);
 
 //        Find all department names
-        List<String> deptNames = employees.stream().map(Employee :: getDepartment).collect(Collectors.toList());
+        List<String> deptNames = employees.stream().map(Employee::getDepartment).collect(Collectors.toList());
         System.out.println(deptNames);
 
 //        Find the count of employee in each department
-        Map<String, Long> listCount = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment , Collectors.counting()));
-        System.out.println("Count of employee in each department :  "+listCount);
+        Map<String, Long> listCount = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
+        System.out.println("Count of employee in each department :  " + listCount);
     }
 }
