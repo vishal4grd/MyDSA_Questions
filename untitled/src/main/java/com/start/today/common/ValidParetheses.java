@@ -1,7 +1,4 @@
-package com.start.today;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.start.today.common;
 
 public class ValidParetheses {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.start.today;
+package com.start.today.common;
 
 public class SecondLargestElement {
     public static void main(String[] args) {

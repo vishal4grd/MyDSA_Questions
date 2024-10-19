@@ -1,4 +1,4 @@
-package com.start.today;
+package com.start.today.common;
 
 import java.util.Arrays;
 import java.util.HashMap;

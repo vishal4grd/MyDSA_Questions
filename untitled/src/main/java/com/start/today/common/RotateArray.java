@@ -1,8 +1,4 @@
-package com.start.today;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+package com.start.today.common;
 
 public class RotateArray {
     public static void main(String[] args) {
