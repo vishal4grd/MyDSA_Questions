@@ -6,9 +6,9 @@ import java.util.HashMap;
 public class TwoSum {
     public static void main(String[] args) {
 
-        int arr[] = {3,2,4};
+        int[] arr = {3,2,4};
         int target = 6;
-        int result[] = checkTwoSum(arr,target);
+        int[] result = checkTwoSum(arr,target);
         System.out.println(Arrays.toString(result));
     }
 
