@@ -1,4 +1,4 @@
-package com.start.today.pojo;
+package today.pojo;
 
 public class Employee {
     private String name;

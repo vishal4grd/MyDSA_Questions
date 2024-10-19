@@ -1,6 +1,6 @@
-package com.start.today.streamapi.problems;
+package today.streamapi.problems;
 
-import com.start.today.pojo.Employee;
+import today.pojo.Employee;
 
 import java.util.ArrayList;
 import java.util.List;

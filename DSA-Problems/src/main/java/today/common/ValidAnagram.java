@@ -1,4 +1,4 @@
-package com.start.today.common;
+package today.common;
 
 public class ValidAnagram {
     public static void main(String[] args) {
