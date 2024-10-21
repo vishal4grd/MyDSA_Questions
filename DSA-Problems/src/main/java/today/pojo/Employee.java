@@ -1,5 +1,10 @@
 package today.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Employee {
     private String name;
     private double salary;
@@ -9,7 +14,7 @@ public class Employee {
     private String address;
 
     // Constructor
-    public Employee(String name, double salary, int age, String department, String designation, String address) {
+   /* public Employee(String name, double salary, int age, String department, String designation, String address) {
         this.name = name;
         this.salary = salary;
         this.age = age;
@@ -66,5 +71,5 @@ public class Employee {
 
     public void setAddress(String address) {
         this.address = address;
-    }
+    }*/
 }
