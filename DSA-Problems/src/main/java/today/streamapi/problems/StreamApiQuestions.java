@@ -3,6 +3,7 @@ package today.streamapi.problems;
 import today.pojo.Employee;
 
 import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class StreamApiQuestions {
@@ -84,6 +85,12 @@ public class StreamApiQuestions {
 
 //      Find the department names that these employees work for , where the number in employees in the department is over 3.
         Map<String, Long> deptNameHighSalary1  = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
-        deptNameHighSalary1.entrySet().stream().filter(e -> e.getValue() > 3).forEach(System.out::println);
+//        deptNameHighSalary1.entrySet().stream().filter(e -> e.getValue() > 3).forEach(System.out::println);
+
+//        Find the department wise highest Salary
+         Map<String,Optional<Employee>> res12 = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))));
+//         res12.forEach((key, value)-> System.out.println("Department name  : " + key + "         Salary : " +value.get().getSalary() + "Name of the employees : "+ value.get().getName()) );
+         res12.forEach((key, value)-> System.out.printf("Department name: %s, Employee Name : %s, Salary: %.2f%n", key , value.get().getName(), value.get().getSalary()));
+
     }
 }
