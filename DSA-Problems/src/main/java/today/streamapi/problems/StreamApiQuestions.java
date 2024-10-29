@@ -51,6 +51,8 @@ public class StreamApiQuestions {
         for (Map.Entry<String, List<Employee>> emp : listCount.entrySet()) {
 //                System.out.println("Key: " + emp.getKey() + "value " +  emp.getValue());
         }
+//        listCount.entrySet().stream().forEach(e-> System.out.println("Key: " + e.getKey() + "          value " +  e.getValue()));
+//        listCount.entrySet().stream().forEach(e-> System.out.printf("Department name: %s , Number of Employees in each department: %s%n " , e.getKey(), e.getValue()));
 
         List<Employee> sortedEmplist = employees.stream().sorted(Comparator.comparing(Employee::getName)).collect(Collectors.toList());
 //        sortedEmplist.forEach(System.out::println);
@@ -69,7 +71,9 @@ public class StreamApiQuestions {
 
         // Print the highest salary employee in each department
 
-        Map<String , Employee> res = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary)), Optional::get)));
+        Map<String , Employee> res = employees.stream().collect(Collectors.groupingBy
+                (Employee::getDepartment, Collectors.collectingAndThen(Collectors.maxBy(
+                        Comparator.comparingDouble(Employee::getSalary)), Optional::get)));
 //        res.entrySet().forEach(e -> System.out.println("Department :" + e.getKey() + "          Salary :" + e.getValue()));
 
         // Find department wise counting of employee
@@ -88,9 +92,11 @@ public class StreamApiQuestions {
 //        deptNameHighSalary1.entrySet().stream().filter(e -> e.getValue() > 3).forEach(System.out::println);
 
 //        Find the department wise highest Salary
-         Map<String,Optional<Employee>> res12 = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))));
+         Map<String,Optional<Employee>> res12 = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(
+                 Comparator.comparingDouble(Employee::getSalary))));
 //         res12.forEach((key, value)-> System.out.println("Department name  : " + key + "         Salary : " +value.get().getSalary() + "Name of the employees : "+ value.get().getName()) );
-         res12.forEach((key, value)-> System.out.printf("Department name: %s, Employee Name : %s, Salary: %.2f%n", key , value.get().getName(), value.get().getSalary()));
+//         res12.forEach((key, value)-> System.out.printf("Department name: %s, Employee Name : %s, Salary: %.2f%n", key , value.get().getName(),
+//                 value.get().getSalary()));
 
     }
 }
