@@ -22,12 +22,19 @@ public class StreamApiQuestions {
         employees.add(new Employee(2, "Lisa Nguyen", 70000.0, 36, "Finance", "Financial Manager", "666 Oak St"));
         employees.add(new Employee(2, "Lisa Nguyen", 70000.0, 36, "Finance", "Financial Manager", "666 Oak St"));
 
-        //Find list of employees whose name starts with alphabet A
+        /**
+         * Find list of employees whose name starts with alphabet A
+         *
+         */
 
         List<Employee> aEmp = employees.stream().filter(e -> e.getName().startsWith("A") || e.getName().startsWith("a")).collect(Collectors.toList());
 //        System.out.println(aEmp.get(0).getName());
 
-        //Group The employees By Department Names
+        /**
+         * Group The employees By Department Names
+         *
+         */
+
 //        Map<String, List<Employee>> deptMap = employees.stream().collect(Collectors.groupingBy(emp -> emp.getDepartment()));
         Map<String, List<Employee>> deptMap = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)); // or we can replace the lambda expn by method reference
         for (Map.Entry<String, List<Employee>> entry : deptMap.entrySet()) {
@@ -35,16 +42,28 @@ public class StreamApiQuestions {
 //                System.out.println(emp.getDepartment());
             }
         }
-        //Find the max age of employees6
+
+        /**
+         * Find the max age of employees6
+         *
+         */
 //        int maxAge = employees.stream().mapToInt(emp -> emp.getAge()).max().getAsInt();
         int maxAge = employees.stream().mapToInt(Employee::getAge).max().getAsInt();
 //        System.out.println("Max age is :  " + maxAge);
 
-//        Find all department names
+        /**
+         * Find all department names
+         *
+         */
+
         List<String> deptNames = employees.stream().map(Employee::getDepartment).collect(Collectors.toList());
 //        System.out.println(deptNames);
 
-//        Find the count of employee in each department
+        /**
+         * Find the count of employee in each department
+         *
+         */
+
 //        Map<String, Long> listCount = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
         Map<String, List<Employee>> listCount = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));
 //        System.out.println("Count of employee in each department :  " + listCount);
@@ -57,41 +76,72 @@ public class StreamApiQuestions {
         List<Employee> sortedEmplist = employees.stream().sorted(Comparator.comparing(Employee::getName)).collect(Collectors.toList());
 //        sortedEmplist.forEach(System.out::println);
 
-        // sort with name and age with no duplicate
+        /**
+         * sort with name and age with no duplicate
+         *
+         */
+
         List<Employee> sortedEmplistNameandSalary = employees.stream().distinct().sorted(Comparator.comparing(Employee::getId).thenComparing(Employee::getName)).collect(Collectors.toList());
 //        sortedEmplistNameandSalary.forEach(System.out::println);
 
-        //sort employee in reverse order
+        /**
+         * sort employee in reverse order
+         *
+         */
+
         List<Employee> sortNameRevOrder = employees.stream().distinct().sorted(Comparator.comparing(Employee::getName).reversed()).collect(Collectors.toList());
 //        sortNameRevOrder.forEach(System.out::println);
 
-        // print List of employee age in reverse order
+        /**
+         * print List of employee age in reverse order
+         *
+         */
+
         List<Employee> empListAgeRevOrder = employees.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).collect(Collectors.toList());
 //        empListAgeRevOrder.forEach(System.out::println);
 
-        // Print the highest salary employee in each department
+        /**
+         * Print the highest salary employee in each department
+         *
+         */
 
         Map<String , Employee> res = employees.stream().collect(Collectors.groupingBy
                 (Employee::getDepartment, Collectors.collectingAndThen(Collectors.maxBy(
                         Comparator.comparingDouble(Employee::getSalary)), Optional::get)));
 //        res.entrySet().forEach(e -> System.out.println("Department :" + e.getKey() + "          Salary :" + e.getValue()));
 
-        // Find department wise counting of employee
+        /**
+         * Find department wise counting of employee
+         *
+         */
+
         Map<String, Long> deptWiseCounting = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
 //        deptWiseCounting.entrySet().forEach(e -> System.out.println("Department : " + e.getKey() +"   Number of employees : " + e.getValue()));
 //        deptWiseCounting.forEach((key, value) -> System.out.println("Department : " + key + "   Number of employees : " + value));
 //        deptWiseCounting.forEach((key, value) -> System.out.printf("Department : %s , Number of Employees : %d%n", key, value));
 
-//        Find the department name which has the highest number of employee
+        /**
+         * Find the department name which has the highest number of employee
+         *
+         */
+
         Map<String, Long> deptNameHighSalary  = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
         String depps =  deptNameHighSalary.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey();
 //        System.out.println(" Department Name with Highest salary : " + depps);
 
-//      Find the department names that these employees work for , where the number in employees in the department is over 3.
+        /**
+         * Find the department names that these employees work for , where the number in employees in the department is over 3.
+         *
+         */
+
         Map<String, Long> deptNameHighSalary1  = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
 //        deptNameHighSalary1.entrySet().stream().filter(e -> e.getValue() > 3).forEach(System.out::println);
 
-//        Find the department wise highest Salary
+        /**
+         * Find the department wise highest Salary
+         *
+         */
+
          Map<String,Optional<Employee>> res12 = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(
                  Comparator.comparingDouble(Employee::getSalary))));
 //         res12.forEach((key, value)-> System.out.println("Department name  : " + key + "         Salary : " +value.get().getSalary() + "Name of the employees : "+ value.get().getName()) );

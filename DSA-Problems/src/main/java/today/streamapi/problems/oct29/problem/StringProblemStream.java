@@ -53,7 +53,7 @@ public class StringProblemStream {
 
         int[] numbers = {5,9,11,2,8,21,21,1};
         Then your logic will fail because...in reverse order it will show [21,21,11,9,8,5,1].....but second highest number is 11....but it will show 21.
-        I think we need to add one more logic for remove duplicacy again then only it will show 11.
+        I think we need to add one more logic for remove duplicate again then only it will show 11.
 
         int[] numbers = {5,9,11,2,8,21,21,1};
         Integer SecondHighestElement = Arrays.stream(numbers).boxed()
